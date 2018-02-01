@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+    br
+    br
+    
+    .row
+        .col-md-4
+        .col-md-4
+            //- if errors
+            //-  each error, i in errors
+            //-   div.success.alert.alert-danger #{error.msg}
+            - if (message.length > 0){
+                div.login-done.alert.alert-danger #{message}
+             - }
+            form.fo(action='/signup', method='post')
+                .form-group
+                    label(for='email') email :
+                    input.form-control(type='email', name='email', aria-describedby='helpId', placeholder='enter your email')
+                .form-group
+                    label(for='password') password :
+                    input.form-control(type='password', name='password', placeholder='enter your password')
+                .form-group
+                    input.btn.btn-dark.float-right(type='submit', value='Sign up')

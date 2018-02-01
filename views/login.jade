@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    br
+    br
+   
+    .row
+        .col-md-4
+        .col-md-4
+            - if (message.length > 0){
+                div.login-done.alert.alert-danger #{message}
+             - }
+            form.fo(action='/login', method='post')
+                .form-group
+                    label(for='email') user name :
+                    input.form-control(type='email', name='email', placeholder='enter username')
+                .form-group
+                    label(for='password') password :
+                    input.btn-dark.float-right(type='hidden', name='_csrf', value='#{csrfToken}')
+                    input.form-control(type='password', name='password', placeholder='enter your password')
+                .form-group
+                    input.btn.btn-dark.float-right(type='submit', value='Sign in')
